@@ -1,6 +1,6 @@
 #pragma once
 #include<Arduino.h>
-#include<LoRa.h>
+#include<Lora\Lora.h>
 #include<SPI.h>
 
 

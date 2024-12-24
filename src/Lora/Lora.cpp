@@ -43,17 +43,16 @@ bool Lora::sendMessage() {
     message = "SOS";
 };
 
-bool Lora::getMessage() {
+String Lora::getMessage() {
   packetSize = LoRa.parsePacket();
   if (packetSize) {
     while(LoRa.available()) {
       char text = LoRa.read();
       response += text;
     }
-    Serial.print("Emergency Signal: ");
-    Serial.println(response);
-    return true;
-  } else {return false;}
+    response = "Emergency Signal: " + response;
+  }
+  return response;
 };
 
 void Lora::setPower() {

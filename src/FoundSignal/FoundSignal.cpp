@@ -15,7 +15,7 @@ void FoundSignal::FoundGpsMessage() {
 };
 
 String FoundSignal::FoundMessage() {
-    String message;
+    String message = lora.getMessage();
 
 
     return message;
