@@ -10,24 +10,11 @@ class Lora {
     int packetSize;
     int rssi;
 
-    Lora(){};
-
-    bool init(int ss, int rst, int scl, int di, int frequencie, int ledPinTX, int ledPinRX, int ledPinError);
-    bool sendMessage();
-    String getMessage();
+    void init();
+    void sendMessage();
+    bool getMessage();
     void setPower();
-    void setLedTx();
-    void setLedRx();
-    void setLedError();
 
     private:
-        int ledPinRX = -1;
-        int ledPinTX = -1;
-        int ledPinError = -1;
-        int frequencie = -1;
-        int ss = -1;
-        int rst = -1;
-        int scl = -1;
-        int di = -1;
 
 };

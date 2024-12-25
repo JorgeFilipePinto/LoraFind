@@ -14,9 +14,9 @@ void FoundSignal::FoundGpsMessage() {
 
 };
 
-String FoundSignal::FoundMessage() {
-    String message = lora.getMessage();
-
-
-    return message;
-}
+void FoundSignal::FoundMessage() {
+    if(lora.getMessage()) {
+        Serial.println(lora.response);
+    }
+    
+};

@@ -36,7 +36,9 @@ void SendSignal::sendCoordinates() {
 };
 
 void SendSignal::sendEmergencyContacts() {
-    Serial.println("Emergency contacts: 91xxxxxxx");
+    Serial.println(emergencyMessage);
+    lora.message = emergencyMessage;
+    lora.sendMessage();
 }
 
 void SendSignal::powerSave() {
