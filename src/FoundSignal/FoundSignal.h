@@ -6,11 +6,12 @@
 
 class FoundSignal{
     public:
+        bool signal = false;
+        unsigned long lastMessage = millis();
         String response;
         Lora lora;
         FoundSignal() = default;   
         double getDistanceRssi(double, int);
-        void FoundGpsMessage();
         void FoundMessage();
 
         

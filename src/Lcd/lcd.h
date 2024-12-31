@@ -18,6 +18,8 @@ class Lcd {
         void init(int width, int height, int sdaPin, int sclPin);
         void setMessageDisplay(String message, int posX, int posY, int size);
         void checkMessage(String message, int posX, int posY, int size);
+        void noSignal();
+        void lostSignal();
         
     private:
         int width = -1;

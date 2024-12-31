@@ -23,13 +23,13 @@ void Lora::sendMessage() {
 
 bool Lora::getMessage() {
   packetSize = LoRa.parsePacket();
-  response = "";
+  String message = "";
   if (packetSize) {
     while(LoRa.available()) {
       char text = LoRa.read();
-      response += text;
+      message += text;
     }
-    response = "Emergency Signal: " + response + "\nRSSI: " + LoRa.rssi();
+    response = message + "\nRSSI: " + LoRa.rssi();
     return true;
   } else { return false;}
 };

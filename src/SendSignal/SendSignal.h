@@ -4,6 +4,7 @@
 
 class SendSignal {
     public:
+        int count = 0;
         bool emergency;
         bool gps;
         String emergencyMessage;
@@ -26,7 +27,7 @@ class SendSignal {
         unsigned long getBaud();
         void sendSOS(int, String);
         void sendCoordinates();
-        void sendEmergencyContacts();
+        String sendEmergencyContacts();
         void powerSave();
 
     private:

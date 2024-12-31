@@ -35,10 +35,14 @@ void SendSignal::sendCoordinates() {
     }
 };
 
-void SendSignal::sendEmergencyContacts() {
-    Serial.println(emergencyMessage);
-    lora.message = emergencyMessage;
+String SendSignal::sendEmergencyContacts() {
+    String message = emergencyMessage + ": " + count;
+    Serial.println(message);
+    lora.message = message;
     lora.sendMessage();
+    count++;
+    if(count == 1000) {count = 0;}
+    return message;
 }
 
 void SendSignal::powerSave() {

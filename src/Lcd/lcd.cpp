@@ -23,7 +23,23 @@ void Lcd::checkMessage(String message, int posX, int posY, int size) {
     }
 }
 
+void Lcd::noSignal() {
+    lcd-> clearDisplay();
+    lcd-> setCursor(50, 20);
+    lcd-> print("NO");
+    lcd-> setCursor(45, 40);
+    lcd-> print("SIGNAL");
+    lcd-> display();
+}
 
+void Lcd::lostSignal() {
+    lcd-> clearDisplay();
+    lcd-> setCursor(50, 20);
+    lcd-> print("LOST");
+    lcd-> setCursor(45, 40);
+    lcd-> print("SIGNAL");
+    lcd-> display();
+}
 
 
 void Lcd::setMessageDisplay(String message, int posX, int posY, int size) {

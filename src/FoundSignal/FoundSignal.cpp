@@ -10,13 +10,11 @@ double FoundSignal::getDistanceRssi(double avgValues, int rssi) {
 };
 
 
-void FoundSignal::FoundGpsMessage() {
-
-};
-
 void FoundSignal::FoundMessage() {
     if(lora.getMessage()) {
         Serial.println(lora.response);
+        response = lora.response;
+        lastMessage = millis();
+        signal = true;
     }
-    
 };
