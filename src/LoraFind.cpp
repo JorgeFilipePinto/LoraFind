@@ -38,12 +38,14 @@ void setup() {
 
 
 void loop() {
-    bool txMode = false;
+    bool txMode = true;
     lcd.setMessageDisplay("WELCOME", 20, 30, 2);
     delay(2000);
     bool deviceSelected = false;
     //selectorChange(SELECTOR) ? txMode = false : txMode = true;
-    txMode ? lcd.setMessageDisplay("TX MODE", 20, 30, 2) : lcd.setMessageDisplay("RX MODE", 20, 30, 2);
+    String power;
+    !txMode ? power = String(foundSignal.lora.setPower(14)) : power = String(sendSignal.lora.setPower(1));
+    txMode ? lcd.setMessageDisplay("TX MODE", 0, 30, 2, power, 100, 30, 2) : lcd.setMessageDisplay("RX MODE", 0, 30, 2, power, 100, 30, 2);
     delay(5000);
     while(txMode) {
         lcd.setMessageDisplay(sendSignal.sendEmergencyContacts(), 20, 30, 2);

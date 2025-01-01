@@ -13,7 +13,7 @@ class Lora {
     void init();
     void sendMessage();
     bool getMessage();
-    void setPower();
+    int setPower(int power);
 
     private:
 

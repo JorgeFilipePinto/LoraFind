@@ -37,6 +37,7 @@ bool Lora::getMessage() {
 
 
 
-void Lora::setPower() {
-
+int Lora::setPower(int power) {
+  LoRa.setTxPower(1);
+  return power;
 };
