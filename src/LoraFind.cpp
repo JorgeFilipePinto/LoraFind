@@ -43,19 +43,23 @@ void loop() {
     delay(2000);
     bool deviceSelected = false;
     //selectorChange(SELECTOR) ? txMode = false : txMode = true;
-    txMode ? lcd.checkMessage("TX MODE", 20, 30, 2) : lcd.checkMessage("RX MODE", 20, 30, 2);
+    txMode ? lcd.setMessageDisplay("TX MODE", 20, 30, 2) : lcd.setMessageDisplay("RX MODE", 20, 30, 2);
     delay(5000);
     while(txMode) {
-        lcd.checkMessage(sendSignal.sendEmergencyContacts(), 20, 30, 2);
+        lcd.setMessageDisplay(sendSignal.sendEmergencyContacts(), 20, 30, 2);
         delay(500);
         selectorChange(SELECTOR) ? ESP.restart() : void();
     }
 
     while(!txMode) {
         foundSignal.FoundMessage();
-        lcd.checkMessage(foundSignal.response, 20, 20, 2);
+        if(foundSignal.signal && !foundSignal.lostSignal) {
+            lcd.setMessageDisplay(foundSignal.response, 0, 0, 2, foundSignal.values, 0, 40, 1);
+        }
         if(millis() - foundSignal.lastMessage >= 10000) {
             foundSignal.signal ?  lcd.lostSignal() : lcd.noSignal();
+            foundSignal.lostSignal = true;
+            foundSignal.count = 0;
             }
         selectorChange(SELECTOR) ? ESP.restart() : void();
     }

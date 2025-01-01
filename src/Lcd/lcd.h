@@ -16,8 +16,7 @@ class Lcd {
         int displayPosX = 0;
         int displayPosY = 0;
         void init(int width, int height, int sdaPin, int sclPin);
-        void setMessageDisplay(String message, int posX, int posY, int size);
-        void checkMessage(String message, int posX, int posY, int size);
+        void setMessageDisplay(String message, int posX, int posY, int size, String message2 = "", int posX2 = 0, int posY2 = 0, int size2 = 0);
         void noSignal();
         void lostSignal();
         

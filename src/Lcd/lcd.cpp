@@ -15,14 +15,6 @@ void Lcd::init(int width, int height, int sdaPin, int sclPin) {
     delay(2000);
 };
 
-
-void Lcd::checkMessage(String message, int posX, int posY, int size) {
-    if(displayMessage != message || displayPosX != posX || displayPosY != posY) {
-        this-> message = message;
-        setMessageDisplay(message, posX, posY, size);
-    }
-}
-
 void Lcd::noSignal() {
     lcd-> clearDisplay();
     lcd-> setCursor(50, 20);
@@ -42,15 +34,15 @@ void Lcd::lostSignal() {
 }
 
 
-void Lcd::setMessageDisplay(String message, int posX, int posY, int size) {
+void Lcd::setMessageDisplay(String message, int posX, int posY, int size, String message2, int posX2, int posY2, int size2) {
     lcd-> clearDisplay();
     lcd-> setTextColor(SSD1306_WHITE);
     lcd-> setCursor(posX, posY);
     lcd-> setTextSize(size);
     lcd-> print(message);
-    displayMessage = message;
-    displayPosX = posX;
-    displayPosY = posY;
+    lcd-> setCursor(posX2, posY2);
+    lcd-> setTextSize(size2);
+    lcd-> print(message2);
     lcd-> display();
 }
 

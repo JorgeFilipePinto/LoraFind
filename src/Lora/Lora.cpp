@@ -29,7 +29,8 @@ bool Lora::getMessage() {
       char text = LoRa.read();
       message += text;
     }
-    response = message + "\nRSSI: " + LoRa.rssi();
+    rssi = LoRa.rssi();
+    response = message;
     return true;
   } else { return false;}
 };
