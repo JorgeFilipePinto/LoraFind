@@ -38,7 +38,7 @@ void setup() {
 
 
 void loop() {
-    bool txMode = true;
+    bool txMode = false;
     lcd.setMessageDisplay("WELCOME", 20, 30, 2);
     delay(2000);
     bool deviceSelected = false;
