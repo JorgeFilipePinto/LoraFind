@@ -47,12 +47,15 @@ void loop() {
     !txMode ? power = String(foundSignal.lora.setPower(14)) : power = String(sendSignal.lora.setPower(1));
     txMode ? lcd.setMessageDisplay("TX MODE", 0, 30, 2, power, 100, 30, 2) : lcd.setMessageDisplay("RX MODE", 0, 30, 2, power, 100, 30, 2);
     delay(5000);
+
+    //Loop para rádios TX
     while(txMode) {
         lcd.setMessageDisplay(sendSignal.sendEmergencyContacts(), 20, 30, 2);
         delay(500);
         selectorChange(SELECTOR) ? ESP.restart() : void();
     }
 
+    //Loop para rádios RX
     while(!txMode) {
         foundSignal.FoundMessage();
         if(foundSignal.signal && !foundSignal.lostSignal) {
@@ -67,7 +70,7 @@ void loop() {
     }
 }
 
-
+//Seletor para caso se queira inserir um botão para a alteração de TX para RX ou vice versa
 bool selectorChange(int selector){
     bool change;
     digitalRead(selector) == 1 ? change = true : change = false;
